@@ -33,13 +33,7 @@ class Sampler:
     def stopSound(self, name):
         self.channelMap[name].stop()
         
-    # Change volume of sound
-    def changeVolume(self, name, value):
-        if value < 0 or value > 1:
-            raise ValueError("Volume value must be between 0.0 and 1.0")
-        else:
-            channel = self.channelMap[name]
-            channel.set_volume(value)
+    
     
         
 
