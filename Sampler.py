@@ -30,6 +30,9 @@ class Sampler:
     def playSound(self, name):
         self.channelMap[name].play(self.sounds[name])
 
+    def stopSound(self, name):
+        self.channelMap[name].stop()
+        
     # Change volume of sound
     def changeVolume(self, name, value):
         if value < 0 or value > 1:
