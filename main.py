@@ -1,39 +1,33 @@
 import pygame as pg
+from Sampler import Sampler
 import time
 
 pg.mixer.init()
 pg.init()
 
+# Create sampler
+drumkitSampler = Sampler(16) # Create drum kit sampler with 16 channels
+drumkitSampler.addSound("hh_close", "samples\kit_close\CYCdh_K1close_ClHat-01.wav") 
+drumkitSampler.addSound("hh_open", "samples\kit_close\CYCdh_K1close_OpHat-01.wav") 
+drumkitSampler.addSound("hh_clutch", "samples\kit_close\CYCdh_K1close_PdHat-01.wav") 
+drumkitSampler.addSound("kick", "samples\kit_close\CYCdh_K1close_Kick-01.wav") 
+drumkitSampler.addSound("snare", "samples\kit_close\CYCdh_K1close_Snr-01.wav")
 
-# Sounds
-hhClose = pg.mixer.Sound("./samples/kit_close/CYCdh_K1close_ClHat-01.wav")
-hhOpen = pg.mixer.Sound("./samples/kit_close/CYCdh_K1close_OpHat-01.wav")
-kick = pg.mixer.Sound("./samples/kit_close/CYCdh_K1close_Kick-01.wav")
-snare = pg.mixer.Sound("./samples/kit_close/CYCdh_K1close_Snr-01.wav")
-
-pg.mixer.set_num_channels(50)
-
-for i in range(25):
-    pg.mixer.Channel(1).play(hhClose)
-    pg.mixer.Channel(0).play(kick)
-    
-    time.sleep(0.3)
-
-    pg.mixer.Channel(1).play(hhClose)
+for i in range(100):
+    drumkitSampler.playSound("kick")
+    drumkitSampler.playSound("hh_close")
 
     time.sleep(0.3)
 
-    pg.mixer.Channel(1).play(hhClose)
-    pg.mixer.Channel(0).play(snare)
+    drumkitSampler.playSound("hh_close")
 
     time.sleep(0.3)
 
-    pg.mixer.Channel(1).play(hhClose)
+    drumkitSampler.playSound("snare")
+    drumkitSampler.playSound("hh_close")
 
-    time.sleep(0.15)
+    time.sleep(0.3)
 
-    pg.mixer.Channel(1).play(hhClose)
+    drumkitSampler.playSound("hh_close")
 
-    time.sleep(0.15)
-
-    
+    time.sleep(0.3)
